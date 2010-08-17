@@ -1,0 +1,1 @@
+# Doculab.route_namespace = "doculab"
