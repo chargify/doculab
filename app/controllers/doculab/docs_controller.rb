@@ -1,7 +1,7 @@
 module Doculab
   class DocsController < ApplicationController
     rescue_from Doc::FileNotFound, :with => :handle_file_not_found
-    layout 'docs'
+    layout :select_layout
     helper TableOfContentsHelper
   
     def index
@@ -16,14 +16,46 @@ module Doculab
   
     protected
       def find(permalink)
-        @doc = Doc.find(permalink)
-        @page = TableOfContents.pages.detect { |p| p.permalink == permalink } || TableOfContents::UnindexedPage.new
+        @doc = lookup_doc(permalink)
+        @page = lookup_page(permalink)
       end
       
       def handle_file_not_found(e)
-        @doc = nil
-        @page = TableOfContents::Page.new("File Not Found", nil)
+        @doc = Doc.new(:title => "File Not Found", :content => e.message)
+        @page = TableOfContents::Page.new("File Not Found")
         render :text => e.message, :layout => true
       end
+      
+      def lookup_doc(permalink)
+        begin
+          Doc.find(permalink)
+        rescue Doc::FileNotFound => e
+          if permalink == 'index'
+            Doc.new(:title => Doculab.title, :permalink => 'index', :content => '')
+          else
+            raise e
+          end
+        end
+      end
+          
+      def lookup_page(permalink)
+        if permalink == 'index'
+          TableOfContents::Page.new(Doculab.title)
+        elsif page = TableOfContents.lookup(permalink)
+          page
+        else
+          TableOfContents::Page.new(permalink.titleize)
+        end
+      end
+      
+      def select_layout
+        case params[:permalink]
+        when 'index'
+          Doculab.index_layout
+        else
+          Doculab.main_layout
+        end
+      end
+    # end protected
   end
 end

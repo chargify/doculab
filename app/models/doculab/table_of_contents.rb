@@ -20,6 +20,10 @@ module Doculab
       @@pages << page
     end
     
+    def self.lookup(permalink)
+      pages.detect { |p| p.permalink == permalink }
+    end
+    
     class Section
       attr_reader :title, :pages
       
@@ -48,7 +52,7 @@ module Doculab
     class Page
       attr_reader :parent, :title, :permalink, :doc
       
-      def initialize(title, parent, options = {})
+      def initialize(title, parent = nil, options = {})
         @parent = parent
         @title = title
         @permalink = options[:permalink] || title.parameterize
@@ -79,12 +83,6 @@ module Doculab
         def index
           TableOfContents.pages.index(self)
         end
-    end
-    
-    class UnindexedPage < Page
-      def initialize
-        super('', Page.new('', nil))
-      end
     end
   end
 end

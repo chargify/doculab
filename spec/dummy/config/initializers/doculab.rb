@@ -1,1 +1,1 @@
-# Doculab.route_namespace = "doculab"
+# Doculab.route_base = "doculab"
