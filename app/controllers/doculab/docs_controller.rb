@@ -18,8 +18,9 @@ module Doculab
       def find(permalink)
         @doc = Doc.find(permalink)
         @page = TableOfContents.pages.detect { |p| p.permalink == permalink }
-        Rails.logger.debug "==DOC: #{@doc.inspect}"
-        Rails.logger.debug "==PAGE: #{@page.inspect}"
+        if @page.nil?
+          raise Doc::FileNotFound, "#{permalink} has been removed from the Table of Contents"
+        end
       end
       
       def handle_file_not_found(e)
