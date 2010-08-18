@@ -14,7 +14,7 @@ module Doculab
   #     Doculab.title = "Super Amazing Documentation"
   mattr_writer :title
   def self.title
-    @@title ||= [Doculab.project_name, "Documentation"].reject(&:blank?).join
+    @@title ||= [Doculab.project_name, "Documentation"].reject(&:blank?).join(' ')
   end
   
   # Normally, routes for Doculab are set up based off of "root":
