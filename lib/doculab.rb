@@ -1,8 +1,6 @@
 require 'rubygems'
-require 'bundler'
-
-Bundler.setup
-Bundler.require
+require 'redcloth'
+require 'tilt'
 require 'doculab/engine'
 
 module Doculab
