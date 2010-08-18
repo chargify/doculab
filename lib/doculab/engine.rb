@@ -17,10 +17,6 @@ class Engine < Rails::Engine
     end
   end
   
-  initializer "doculab.sweep_cache" do |app|
-    Doculab::CacheSweeper.sweep!
-  end
-  
   def self.table_of_contents_path
     Rails.root.join("doculab", "meta", "table_of_contents.rb").to_s
   end
