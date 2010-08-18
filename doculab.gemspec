@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{doculab}
-  s.version = "0.0.1"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Klett"]
   s.date = %q{2010-08-18}
-  s.description = %q{A Rails Engine that achieves a simple file-based CMS suitable for a documentation site.  Originally created to power the documentation at http://docs.chargify.com}
+  s.description = %q{A Rails Engine for a simple file-based CMS, suitable for a documentation site.  Originally created to power the Chargify documentation at http://docs.chargify.com}
   s.email = %q{michael@webadvocate.com}
   s.extra_rdoc_files = [
     "README.rdoc"
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "config/cucumber.yml",
      "config/rails_template.rb",
      "config/routes.rb",
+     "doculab.gemspec",
      "features/step_definitions/doc_steps.rb",
      "features/step_definitions/web_steps.rb",
      "features/support/env.rb",
