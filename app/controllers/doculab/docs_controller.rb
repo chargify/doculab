@@ -16,7 +16,7 @@ module Doculab
   
     protected
       def find(permalink)
-        @doc = lookup_doc(permalink)
+        @doc = Doc.find(permalink)
         @page = lookup_page(permalink)
       end
       
@@ -26,18 +26,6 @@ module Doculab
         render :text => e.message, :layout => true
       end
       
-      def lookup_doc(permalink)
-        begin
-          Doc.find(permalink)
-        rescue Doc::FileNotFound => e
-          if permalink == 'index'
-            Doc.new(:title => Doculab.title, :permalink => 'index', :content => '')
-          else
-            raise e
-          end
-        end
-      end
-          
       def lookup_page(permalink)
         if permalink == 'index'
           TableOfContents::Page.new(Doculab.title)
