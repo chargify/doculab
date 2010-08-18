@@ -32,9 +32,6 @@ module Doculab
   
   # Define the layout to use for your "main layout", as found in the doculab/layouts directory.
   # Defaults to "docs" (which equates to docs.html.erb)
-  #
-  # You can use the helper +doc_content+ in place of yield to facilitate nested layouts.
-  # See the documentation for +index_layout+ for more.
   mattr_writer :main_layout
   def self.main_layout
     @@main_layout ||= 'docs'
@@ -46,16 +43,6 @@ module Doculab
   #
   # Consider making this "nested layout" as described in
   # http://edgeguides.rubyonrails.org/layouts_and_rendering.html#using-nested-layouts
-  #
-  # Doculab automatically attempts to render the content for +:doc_content+ via the helper
-  # +doc_content+, so place any nested layout inside this content block, i.e.:
-  #
-  # <% content_for :doc_content do %>
-  #   <div id="doculab_index_page">
-  #     <%= yield %>
-  #   </div>
-  # <% end %>
-  # <%= render :file => 'layouts/docs' %>
   mattr_writer :index_layout
   def self.index_layout
     @@index_layout ||= main_layout

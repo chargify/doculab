@@ -38,7 +38,7 @@ module Doculab
       
       def select_layout
         case params[:permalink]
-        when 'index'
+        when 'index', NilClass
           Doculab.index_layout
         else
           Doculab.main_layout
