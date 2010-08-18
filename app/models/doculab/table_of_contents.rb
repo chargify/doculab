@@ -80,5 +80,11 @@ module Doculab
           TableOfContents.pages.index(self)
         end
     end
+    
+    class UnindexedPage < Page
+      def initialize
+        super('', Page.new('', nil))
+      end
+    end
   end
 end
