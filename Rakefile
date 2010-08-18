@@ -1,4 +1,8 @@
 # encoding: UTF-8
+require 'rubygems'
+require 'bundler'
+Bundler.setup(:default, :development)
+
 require 'rake'
 require 'rake/rdoctask'
 require 'rake/gempackagetask'
@@ -8,6 +12,9 @@ require 'rspec/core/rake_task'
 
 require 'cucumber/rake/task'
 
+require 'jeweler'
+
+# Specs #######################################################################
 Rspec::Core::RakeTask.new(:spec)
 
 task :default => :spec
@@ -20,32 +27,7 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-spec = Gem::Specification.new do |s|
-  s.name = "doculab"
-  s.summary = "A Rails Engine for creating a simple documentation site"
-  s.description = "A Rails Engine that achieves a simple file-based CMS suitable for a documentation site.  Originally created to power the documentation at http://docs.chargify.com"
-  s.files =  FileList["[A-Z]*", "lib/**/*", "app/**/*", "config/**/*", "features/**/*", "spec/**/*"]
-  s.author = "Michael Klett"
-  s.email = "michael@webadvocate.com"
-  s.homepage = "http://github.com/grasshopperlabs/doculab"
-  s.version = "0.0.1"
-  s.add_dependency "tilt"
-  s.add_dependency "RedCloth"
-  s.add_development_dependency "rspec-rails", ">= 2.0.0.beta"
-  s.add_development_dependency 'cucumber'
-  s.add_development_dependency 'cucumber-rails'
-  s.add_development_dependency 'capybara'
-end
-  
-Rake::GemPackageTask.new(spec) do |pkg|
-end
-
-desc "Install the gem #{spec.name}-#{spec.version}.gem"
-task :install do
-  system("gem install pkg/#{spec.name}-#{spec.version}.gem --no-ri --no-rdoc")
-end
-
-# Cucumber
+# Cucumber ####################################################################
 namespace :cucumber do
   Cucumber::Rake::Task.new(:ok, 'Run features that should pass') do |t|
     t.fork = true # You may get faster startup if you set this to false
@@ -69,3 +51,24 @@ task :cucumber => 'cucumber:ok'
 task :features => :cucumber do
   STDERR.puts "*** The 'features' task is deprecated. See rake -T cucumber ***"
 end
+
+# Gem #########################################################################
+
+Jeweler::Tasks.new do |gem|
+  gem.name = "doculab"
+  gem.summary = "A Rails Engine for creating a simple documentation site"
+  gem.description = "A Rails Engine that achieves a simple file-based CMS suitable for a documentation site.  Originally created to power the documentation at http://docs.chargify.com"
+  gem.email = "michael@webadvocate.com"
+  gem.homepage = "http://github.com/grasshopperlabs/doculab"
+  gem.authors = ["Michael Klett"]
+  gem.add_dependency "tilt"
+  gem.add_dependency "RedCloth"
+  gem.add_development_dependency "rails", ">= 3.0.0.rc"
+  gem.add_development_dependency "rspec-rails", ">= 2.0.0.beta"
+  gem.add_development_dependency 'jeweler'
+  gem.add_development_dependency 'cucumber'
+  gem.add_development_dependency 'cucumber-rails'
+  gem.add_development_dependency 'capybara'
+  # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+end
+Jeweler::GemcutterTasks.new
