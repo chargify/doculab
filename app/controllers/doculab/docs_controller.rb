@@ -3,6 +3,7 @@ module Doculab
     rescue_from Doc::FileNotFound, :with => :handle_file_not_found
     layout :select_layout
     helper TableOfContentsHelper
+    caches_page :index, :show
   
     def index
       find('index')
