@@ -22,9 +22,12 @@ end
 
 spec = Gem::Specification.new do |s|
   s.name = "doculab"
-  s.summary = "Easy documentation"
-  s.description = "Easy documentation"
+  s.summary = "A Rails Engine for creating a simple documentation site"
+  s.description = "A Rails Engine that achieves a simple file-based CMS suitable for a documentation site.  Originally created to power the documentation at http://docs.chargify.com"
   s.files =  FileList["[A-Z]*", "lib/**/*", "app/**/*", "config/**/*", "features/**/*", "spec/**/*"]
+  s.author = "Michael Klett"
+  s.email = "michael@webadvocate.com"
+  s.homepage = "http://github.com/grasshopperlabs/doculab"
   s.version = "0.0.1"
   s.add_dependency "tilt"
   s.add_dependency "RedCloth"
