@@ -57,7 +57,7 @@ end
 Jeweler::Tasks.new do |gem|
   gem.name = "doculab"
   gem.summary = "A Rails Engine for creating a simple documentation site"
-  gem.description = "A Rails Engine that achieves a simple file-based CMS suitable for a documentation site.  Originally created to power the documentation at http://docs.chargify.com"
+  gem.description = "A Rails Engine for a simple file-based CMS, suitable for a documentation site.  Originally created to power the Chargify documentation at http://docs.chargify.com"
   gem.email = "michael@webadvocate.com"
   gem.homepage = "http://github.com/grasshopperlabs/doculab"
   gem.authors = ["Michael Klett"]
