@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
     "config/cucumber.yml",
     "config/rails_template.rb",
     "config/routes.rb",
+    "doculab-0.2.1.gem",
     "doculab.gemspec",
     "features/step_definitions/doc_steps.rb",
     "features/step_definitions/web_steps.rb",
