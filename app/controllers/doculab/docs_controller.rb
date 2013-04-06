@@ -23,9 +23,9 @@ module Doculab
       end
       
       def handle_file_not_found(e)
-        @doc = Doc.new(:title => "File Not Found", :content => e.message)
+        @doc = Doc.new(:title => "File Not Found", :content => "File Not Found")
         @page = TableOfContents::Page.new("File Not Found")
-        render :text => e.message, :layout => true
+        render :text => "File Not Found", :layout => true
       end
       
       def lookup_page(permalink)
