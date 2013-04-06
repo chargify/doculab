@@ -61,14 +61,6 @@ Jeweler::Tasks.new do |gem|
   gem.email = "michael@webadvocate.com"
   gem.homepage = "http://github.com/grasshopperlabs/doculab"
   gem.authors = ["Michael Klett"]
-  gem.add_dependency "tilt"
-  gem.add_dependency "RedCloth"
-  gem.add_development_dependency "rails", ">= 3.0.0.rc"
-  gem.add_development_dependency "rspec-rails", ">= 2.0.0.beta"
-  gem.add_development_dependency 'jeweler'
-  gem.add_development_dependency 'cucumber'
-  gem.add_development_dependency 'cucumber-rails'
-  gem.add_development_dependency 'capybara'
   # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
 end
 Jeweler::GemcutterTasks.new
