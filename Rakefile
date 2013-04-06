@@ -4,8 +4,8 @@ require 'bundler'
 Bundler.setup(:default, :development)
 
 require 'rake'
-require 'rake/rdoctask'
-require 'rake/gempackagetask'
+require 'rdoc/task'
+require 'rubygems/package_task'
 
 require 'rspec/core'
 require 'rspec/core/rake_task'
