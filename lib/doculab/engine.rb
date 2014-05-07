@@ -1,6 +1,6 @@
 class Engine < Rails::Engine
   initializer "doculab.add_view_paths", :before => :add_view_paths do |app|
-    app.config.paths.app.views << Rails.root.join("doculab").to_s
+    app.paths["app/views"].unshift Rails.root.join("doculab").to_s
   end
   
   initializer "doculab.table_of_contents_preparation", :before => :add_to_prepare_blocks do |app|
